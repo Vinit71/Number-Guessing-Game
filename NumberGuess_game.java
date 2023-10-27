@@ -8,7 +8,7 @@ class NumberGuessing {
         int lowerBound = 0, upperBound = 10; //Number Range
         int randomNumb = generateRandomNumbers(upperBound, lowerBound);
         boolean guessCorretly = false;
-        int attempt = 0;
+        int attempt = 3;
 
         //User interactive part
         System.out.println("Welcome to the Number Guessing Game!");
@@ -16,7 +16,7 @@ class NumberGuessing {
         System.out.println("You have 3 lifes to give correct answer");
         
         //Game logic
-        while(guessCorretly==false && attempt<3){
+        while(guessCorretly==false && attempt>0){
             System.out.print("Enter your guessed number: ");
             int userGuess = input.nextInt();
 
@@ -25,18 +25,18 @@ class NumberGuessing {
             }
             else if(userGuess<randomNumb){
                 System.out.println("opps! It's Smaller number");
-                attempt++;
-                System.out.println("\nYou have used "+attempt+" life");
+                attempt--;
+                System.out.println("\nYou have "+attempt+" life left");
             }
             else if(userGuess>randomNumb){
                 System.out.println("opps! It's Bigger number");
-                attempt++;
-                System.out.println("\nYou have used "+attempt+" life");
+                attempt--;
+                System.out.println("\nYou have "+attempt+" life left");
             }
             else{
                 guessCorretly = true;
                 System.out.println("YOU WON!");
-                System.out.println("\nYou used "+ attempt + " lifes");
+                System.out.println("\nStill have "+ attempt + " lifes");
             }
     
         }
